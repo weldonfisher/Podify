@@ -1,76 +1,79 @@
+import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image } from "react-native";
 import { Link } from "expo-router";
 import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 export default function SignIn() {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Link href="/welcome" asChild>
-          <TouchableOpacity>
-            <Ionicons name="chevron-back" size={24} color="#000" />
-          </TouchableOpacity>
-        </Link>
-      </View>
-
-      <View style={styles.content}>
-        <Text style={styles.title}>Sign In</Text>
-        <Text style={styles.subtitle}>Let's sign in with your Podify account</Text>
-
-        <View style={styles.form}>
-          <View style={styles.inputContainer}>
-            <TextInput 
-              placeholder="Email"
-              placeholderTextColor="#8E8E93"
-              style={styles.input}
-            />
-          </View>
-
-          <View style={styles.inputContainer}>
-            <TextInput 
-              placeholder="Password"
-              placeholderTextColor="#8E8E93"
-              secureTextEntry
-              style={styles.input}
-            />
-            <TouchableOpacity style={styles.eyeButton}>
-              <Image source={require("../assets/images/eye-off.png")} style={styles.eyeIcon} />
+    <>
+      <StatusBar style="dark" />
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <Link href="/welcome" asChild>
+            <TouchableOpacity>
+              <Ionicons name="chevron-back" size={24} color="#000" />
             </TouchableOpacity>
-          </View>
+          </Link>
+        </View>
 
-          <TouchableOpacity>
-            <Text style={styles.forgotPassword}>Forgot password?</Text>
-          </TouchableOpacity>
+        <View style={styles.content}>
+          <Text style={styles.title}>Sign In</Text>
+          <Text style={styles.subtitle}>Let's sign in with your Podify account</Text>
 
-          <TouchableOpacity style={styles.signInButton}>
-            <Text style={styles.signInButtonText}>Sign In</Text>
-          </TouchableOpacity>
+          <View style={styles.form}>
+            <View style={styles.inputContainer}>
+              <TextInput 
+                placeholder="Email"
+                placeholderTextColor="#8E8E93"
+                style={styles.input}
+              />
+            </View>
 
-          <Text style={styles.orText}>Or sign in with</Text>
-
-          <View style={styles.socialButtons}>
-            <TouchableOpacity style={styles.socialButton}>
-              <Image source={require("../assets/images/apple.png")} style={styles.socialIcon} />
-              <Text style={styles.socialButtonText}>Apple</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.socialButton}>
-              <Image source={require("../assets/images/google.png")} style={styles.socialIcon} />
-              <Text style={styles.socialButtonText}>Google</Text>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.footer}>
-            <Text style={styles.footerText}>Don't have an account? </Text>
-            <Link href="/signup" asChild>
-              <TouchableOpacity>
-                <Text style={styles.signUpLink}>Sign Up</Text>
+            <View style={styles.inputContainer}>
+              <TextInput 
+                placeholder="Password"
+                placeholderTextColor="#8E8E93"
+                secureTextEntry
+                style={styles.input}
+              />
+              <TouchableOpacity style={styles.eyeButton}>
+                <Image source={require("../assets/images/eye-off.png")} style={styles.eyeIcon} />
               </TouchableOpacity>
-            </Link>
+            </View>
+
+            <TouchableOpacity>
+              <Text style={styles.forgotPassword}>Forgot password?</Text>
+            </TouchableOpacity>
+              <View style={styles.formBttons}>
+               <TouchableOpacity style={styles.signInButton}>
+                <Text style={styles.signInButtonText}>Sign In</Text>
+              </TouchableOpacity>
+
+            <View style={styles.socialButtons}>
+              <TouchableOpacity style={styles.socialButton}>
+                <Image source={require("../assets/images/apple.png")} style={styles.socialIcon} />
+                <Text style={styles.socialButtonText}>Apple</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={styles.socialButton}>
+                <Image source={require("../assets/images/google.png")} style={styles.socialIcon} />
+                <Text style={styles.socialButtonText}>Google</Text>
+              </TouchableOpacity>
+            </View></View>
           </View>
         </View>
-      </View>
-    </SafeAreaView>
+
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Don't have an account? </Text>
+          <Link href="/signup" asChild>
+            <TouchableOpacity>
+              <Text style={styles.signUpLink}>Sign Up</Text>
+            </TouchableOpacity>
+          </Link>
+        </View>
+      </SafeAreaView>
+    </>
   );
 }
 
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
   },
   header: {
     paddingHorizontal: 24,
-    paddingTop: 20,
+    paddingTop: 50,
   },
   content: {
     flex: 1,
@@ -102,11 +105,15 @@ const styles = StyleSheet.create({
   form: {
     gap: 16,
   },
+  formBttons: {
+    marginTop: 20,
+    gap: 32,
+  },
   inputContainer: {
     position: 'relative',
   },
   input: {
-    backgroundColor: "#F2F2F7",
+    backgroundColor: "#F8FAFC",
     borderRadius: 12,
     padding: 16,
     color: "#000000",
@@ -128,8 +135,8 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
   signInButton: {
-    backgroundColor: "#000000",
-    borderRadius: 32,
+    backgroundColor: "#0D0D12",
+    borderRadius: 12,
     padding: 20,
     alignItems: "center",
     marginTop: 8,
@@ -155,15 +162,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FFFFFF",
-    borderRadius: 32,
+    borderRadius: 12,
     padding: 16,
     gap: 8,
     borderWidth: 1,
     borderColor: "#E5E5EA",
+    height: 56,
+
   },
   socialIcon: {
     width: 24,
-    height: 24,
   },
   socialButtonText: {
     color: "#000000",
@@ -174,7 +182,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 24,
+    paddingBottom: 40,
+    paddingTop: 16,
   },
   footerText: {
     color: "#8E8E93",
