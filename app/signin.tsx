@@ -1,103 +1,188 @@
-import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image } from "react-native";
 import { Link } from "expo-router";
+import { Ionicons } from '@expo/vector-icons';
 
-export default function App() {
+export default function SignIn() {
   return (
-    <ImageBackground 
-      source={require("../assets/images/Welcome BG.png")} 
-      style={styles.container}
-    >
-      <SafeAreaView style={styles.content}>
-        <View style={styles.logoContainer}>
-          <Image 
-            source={require("../assets/images/Logo.png")} 
-            style={styles.logo} 
-          />
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Link href="/welcome" asChild>
+          <TouchableOpacity>
+            <Ionicons name="chevron-back" size={24} color="#000" />
+          </TouchableOpacity>
+        </Link>
+      </View>
+
+      <View style={styles.content}>
+        <Text style={styles.title}>Sign In</Text>
+        <Text style={styles.subtitle}>Let's sign in with your Podify account</Text>
+
+        <View style={styles.form}>
+          <View style={styles.inputContainer}>
+            <TextInput 
+              placeholder="Email"
+              placeholderTextColor="#8E8E93"
+              style={styles.input}
+            />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <TextInput 
+              placeholder="Password"
+              placeholderTextColor="#8E8E93"
+              secureTextEntry
+              style={styles.input}
+            />
+            <TouchableOpacity style={styles.eyeButton}>
+              <Image source={require("../assets/images/eye-off.png")} style={styles.eyeIcon} />
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity>
+            <Text style={styles.forgotPassword}>Forgot password?</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.signInButton}>
+            <Text style={styles.signInButtonText}>Sign In</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.orText}>Or sign in with</Text>
+
+          <View style={styles.socialButtons}>
+            <TouchableOpacity style={styles.socialButton}>
+              <Image source={require("../assets/images/apple.png")} style={styles.socialIcon} />
+              <Text style={styles.socialButtonText}>Apple</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.socialButton}>
+              <Image source={require("../assets/images/google.png")} style={styles.socialIcon} />
+              <Text style={styles.socialButtonText}>Google</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.footer}>
+            <Text style={styles.footerText}>Don't have an account? </Text>
+            <Link href="/signup" asChild>
+              <TouchableOpacity>
+                <Text style={styles.signUpLink}>Sign Up</Text>
+              </TouchableOpacity>
+            </Link>
+          </View>
         </View>
-
-        <View style={styles.bottomSection}>
-          <Text style={styles.title}>Discover your{'\n'}next favorite podcast.</Text>
-          <Text style={styles.description}>
-            Dive into a world of endless stories, insights, and entertainment. Start exploring now and listen to podcasts tailored just for you!
-          </Text>
-
-
-            
-        </View>
-      </SafeAreaView>
-    </ImageBackground>
+      </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#0D0D12",
+    backgroundColor: "#FFFFFF",
+  },
+  header: {
+    paddingHorizontal: 24,
+    paddingTop: 20,
   },
   content: {
     flex: 1,
     paddingHorizontal: 24,
-  },
-  logoContainer: {
-    paddingTop: 50,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  logo: {
-    width: 160,
-    resizeMode: "contain",
-  },
-  bottomSection: {
-    position: 'absolute',
-    bottom: 50,
-    left: 24,
-    right: 24,
+    paddingTop: 20,
   },
   title: {
     fontSize: 32,
     fontWeight: "bold",
-    color: "#FFFFFF",
-    marginBottom: 16,
+    color: "#000000",
+    marginBottom: 8,
   },
-  description: {
+  subtitle: {
     fontSize: 16,
-    color: "#FFFFFF",
-    opacity: 0.8,
-    lineHeight: 24,
-    marginBottom: 32,
+    color: "#8E8E93",
+    marginBottom: 40,
   },
-  buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#5F57FF",
-    padding: 16,
+  form: {
+    gap: 16,
+  },
+  inputContainer: {
+    position: 'relative',
+  },
+  input: {
+    backgroundColor: "#F2F2F7",
     borderRadius: 12,
-    width: "47%",
-  },
-  buttonContainer2: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "transparent",
     padding: 16,
-    borderRadius: 12,
-    width: "47%",
-    borderWidth: 1,
-    borderColor: "#FFFFFF",
+    color: "#000000",
+    fontSize: 16,
   },
-  buttonText: {
+  eyeButton: {
+    position: 'absolute',
+    right: 16,
+    top: 16,
+  },
+  eyeIcon: {
+    width: 24,
+    height: 24,
+    tintColor: "#8E8E93",
+  },
+  forgotPassword: {
+    color: "#5856D6",
+    fontSize: 16,
+    textAlign: "right",
+  },
+  signInButton: {
+    backgroundColor: "#000000",
+    borderRadius: 32,
+    padding: 20,
+    alignItems: "center",
+    marginTop: 8,
+  },
+  signInButtonText: {
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "600",
-    textAlign: "center",
   },
-  buttonsContainer: {
-
+  orText: {
+    color: "#8E8E93",
+    fontSize: 16,
+    textAlign: "center",
+    marginVertical: 24,
+  },
+  socialButtons: {
+    flexDirection: "row",
+    gap: 16,
+  },
+  socialButton: {
     flex: 1,
     flexDirection: "row",
-    justifyContent: "space-between",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#FFFFFF",
+    borderRadius: 32,
+    padding: 16,
+    gap: 8,
+    borderWidth: 1,
+    borderColor: "#E5E5EA",
   },
-  
-
+  socialIcon: {
+    width: 24,
+    height: 24,
+  },
+  socialButtonText: {
+    color: "#000000",
+    fontSize: 16,
+    fontWeight: "500",
+  },
+  footer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 24,
+  },
+  footerText: {
+    color: "#8E8E93",
+    fontSize: 16,
+  },
+  signUpLink: {
+    color: "#5856D6",
+    fontSize: 16,
+    fontWeight: "600",
+  }
 });
