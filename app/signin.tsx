@@ -1,10 +1,16 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TextInput, TouchableOpacity, Image } from "react-native";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { Ionicons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 
 export default function SignIn() {
+  const router = useRouter();
+
+  const handleSignIn = () => {
+    router.replace('/home');
+  };
+
   return (
     <>
       <StatusBar style="dark" />
@@ -46,7 +52,7 @@ export default function SignIn() {
               <Text style={styles.forgotPassword}>Forgot password?</Text>
             </TouchableOpacity>
               <View style={styles.formBttons}>
-               <TouchableOpacity style={styles.signInButton}>
+               <TouchableOpacity style={styles.signInButton} onPress={handleSignIn}>
                 <Text style={styles.signInButtonText}>Sign In</Text>
               </TouchableOpacity>
 
