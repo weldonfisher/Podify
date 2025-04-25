@@ -22,26 +22,6 @@ export default function App() {
           </Text>
 
 
-
-          <View style={styles.buttonsContainer}>
-
-          <View style={styles.buttonContainer}>
-            <Link href="/signin" asChild>
-              <TouchableOpacity style={[styles.signInButton]}>
-                <Text style={styles.buttonText}>Sign In</Text>
-              </TouchableOpacity>
-            </Link>
-            </View>
-
-
-            <View style={styles.buttonContainer2}>
-            <Link href="/signin" asChild>
-              <TouchableOpacity style={[styles.signInButton]}>
-                <Text style={styles.buttonText}>Sign Up</Text>
-              </TouchableOpacity>
-            </Link>
-            </View>
-            </View>
             
         </View>
       </SafeAreaView>
