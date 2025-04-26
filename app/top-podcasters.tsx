@@ -47,46 +47,55 @@ export default function TopPodcasters() {
 
         <ScrollView style={styles.scrollView}>
           <View style={styles.grid}>
-            <PodcasterCard
-              image={require('../assets/images/Card -Jews Williams.png')}
-              name="Johne Williams"
-              title="The Creative Mindset"
-            />
-            <PodcasterCard
-              image={require('../assets/images/Card - Emily Turner.png')}
-              name="Emily Turner"
-              title="Health Matters"
-            />
-            <PodcasterCard
-              image={require('../assets/images/Card - Fourten K.png')}
-              name="FourteenK"
-              title="Creative Matters"
-            />
-            <PodcasterCard
-              image={require('../assets/images/Card - The Creative Mindset.png')}
-              name="Alex Rivers"
-              title="Tech Today"
-            />
-            <PodcasterCard
-              image={require('../assets/images/Card - Tech Talks  Daily.png')}
-              name="David Chen"
-              title="Daily Tech Talks"
-            />
-            <PodcasterCard
-              image={require('../assets/images/Card - ProductRig.png')}
-              name="Sarah Miller"
-              title="Product Stories"
-            />
-            <PodcasterCard
-              image={require('../assets/images/Card -Jews Williams.png')}
-              name="Mike Johnson"
-              title="Business Insights"
-            />
-            <PodcasterCard
-              image={require('../assets/images/Card - Emily Turner.png')}
-              name="Lisa Parker"
-              title="Life & Wellness"
-            />
+            <View style={styles.row}>
+              <PodcasterCard
+                image={require('../assets/images/Card -Jews Williams.png')}
+                name="Johne Williams"
+                title="The Creative Mindset"
+              />
+              <PodcasterCard
+                image={require('../assets/images/Card - Emily Turner.png')}
+                name="Emily Turner"
+                title="Health Matters"
+              />
+            </View>
+            
+            <View style={styles.row}>
+              <PodcasterCard
+                image={require('../assets/images/Card - Fourten K.png')}
+                name="FourteenK"
+                title="Creative Matters"
+              />
+              <PodcasterCard
+                image={require('../assets/images/Card - The Creative Mindset.png')}
+                name="Alex Rivers"
+                title="Tech Today"
+              />
+            </View>
+            <View style={styles.row}>
+              <PodcasterCard
+                image={require('../assets/images/Card - Tech Talks  Daily.png')}
+                name="David Chen"
+                title="Daily Tech Talks"
+              />
+              <PodcasterCard
+                image={require('../assets/images/Card - ProductRig.png')}
+                name="Sarah Miller"
+                title="Product Stories"
+              />
+            </View>
+            <View style={styles.row}>
+              <PodcasterCard
+                image={require('../assets/images/Card -Jews Williams.png')}
+                name="Mike Johnson"
+                title="Business Insights"
+              />
+              <PodcasterCard
+                image={require('../assets/images/Card - Emily Turner.png')}
+                name="Lisa Parker"
+                title="Life & Wellness"
+              />
+            </View>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -106,6 +115,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 20,
     marginBottom: 24,
+    marginTop: 40,
+
   },
   headerTitle: {
     fontSize: 20,
@@ -134,13 +145,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   grid: {
+    gap: 16,
+  },
+  row: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
     justifyContent: 'space-between',
     gap: 16,
   },
   podcasterCard: {
-    width: '48%',
+    flex: 1,
     marginBottom: 16,
   },
   podcasterImage: {
