@@ -72,7 +72,7 @@ export default function SignIn() {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Don't have an account? </Text>
-          <Link href="/signup" asChild>
+          <Link href="/welcome" asChild>
             <TouchableOpacity>
               <Text style={styles.signUpLink}>Sign Up</Text>
             </TouchableOpacity>

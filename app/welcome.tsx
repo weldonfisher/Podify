@@ -28,7 +28,7 @@ export default function App() {
               </TouchableOpacity>
             </Link>
 
-            <Link href="/signup" asChild style={styles.buttonContainer2}>
+            <Link href="/signin" asChild style={styles.buttonContainer2}>
               <TouchableOpacity style={styles.signUpButton}>
                 <Text style={styles.buttonText}>Sign Up</Text>
               </TouchableOpacity>

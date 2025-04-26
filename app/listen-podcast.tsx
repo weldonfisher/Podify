@@ -2,18 +2,18 @@ import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from "react-native";
 import { StatusBar } from 'expo-status-bar';
 import Slider from '@react-native-community/slider';
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 export default function ListenPodcast() {
+  const router = useRouter();
   return (
     <>
       <StatusBar style="dark" />
       <SafeAreaView style={styles.container}>
         <View style={styles.header}>
-          <TouchableOpacity>
-            <Image 
-              source={require('../assets/images/Listen Podcast-Back.png')} 
-              style={styles.backButton} 
-            />
+          <TouchableOpacity onPress={() => router.push('/home')}>
+            <Ionicons name="chevron-back" size={24} color="#000" />
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Episode 1</Text>
           <View style={{ width: 24 }} />
@@ -30,42 +30,41 @@ export default function ListenPodcast() {
             style={styles.podcastImage} 
           />
 
-          <View style={styles.progressContainer}>
-            <Slider
-              style={styles.progressBar}
-              minimumValue={0}
-              maximumValue={1}
-              value={0.3}
-              minimumTrackTintColor="#5856D6"
-              maximumTrackTintColor="#E2E8F0"
-              thumbTintColor="#5856D6"
-            />
-            <View style={styles.timeContainer}>
+          <View style={styles.playerSection}>
+            <View style={styles.progressRow}>
               <Text style={styles.timeText}>01:34</Text>
+              <Slider
+                style={styles.progressBar}
+                minimumValue={0}
+                maximumValue={1}
+                value={0.3}
+                minimumTrackTintColor="#5856D6"
+                maximumTrackTintColor="#E2E8F0"
+                thumbTintColor="#5856D6"
+              />
               <Text style={styles.timeText}>03:04</Text>
             </View>
-          </View>
-
-          <View style={styles.controls}>
-            <TouchableOpacity>
-              <Image 
-                source={require('../assets/images/Listen Podcast-Next.png')} 
-                style={[styles.controlButton, styles.flipHorizontal]} 
-              />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.playPauseButton}>
-              <Image 
-                source={require('../assets/images/Pause.png')} 
-                style={styles.playPauseIcon}
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image 
-                source={require('../assets/images/Listen Podcast-Next.png')} 
-                style={styles.controlButton} 
-              />
-            </TouchableOpacity>
+            <View style={styles.controlsRow}>
+              <TouchableOpacity>
+                <Image
+                  source={require('../assets/images/Listen Podcast-Next.png')}
+                  style={[styles.controlButton, styles.flipHorizontal]}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.bigPlayPauseButton}>
+                <Image
+                  source={require('../assets/images/Pause.png')}
+                  style={styles.bigPlayPauseIcon}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image
+                  source={require('../assets/images/Listen Podcast-Next.png')}
+                  style={styles.controlButton}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </SafeAreaView>
@@ -85,10 +84,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingTop: 20,
     marginBottom: 24,
-  },
-  backButton: {
-    width: 24,
-    height: 24,
+    marginTop: 40,
+
   },
   headerTitle: {
     fontSize: 16,
@@ -98,9 +95,10 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingHorizontal: 24,
+    alignItems: 'center',
   },
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: '600',
     color: '#0F172A',
     marginBottom: 12,
@@ -110,51 +108,60 @@ const styles = StyleSheet.create({
     color: '#64748B',
     lineHeight: 20,
     marginBottom: 32,
+    textAlign: 'center',
   },
   podcastImage: {
     width: '100%',
-    height: 240,
+    height: 335,
     borderRadius: 16,
     marginBottom: 40,
   },
-  progressContainer: {
-    marginBottom: 40,
+  playerSection: {
+    marginTop: 32,
+    alignItems: 'center',
+    width: '100%',
+  },
+  progressRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '100%',
+    marginBottom: 32,
   },
   progressBar: {
-    width: '100%',
-    height: 40,
+    flex: 1,
+    height: 6,
+    marginHorizontal: 12,
+    borderRadius: 3,
   },
-  timeContainer: {
+  controlsRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: -8,
-  },
-  timeText: {
-    fontSize: 12,
-    color: '#64748B',
-  },
-  controls: {
-    flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    marginTop: 16,
     gap: 48,
   },
   controlButton: {
-    width: 24,
-    height: 24,
+    width: 32,
+    height: 32,
   },
   flipHorizontal: {
     transform: [{ scaleX: -1 }],
   },
-  playPauseButton: {
-    width: 64,
-    height: 64,
-    justifyContent: 'center',
+  bigPlayPauseButton: {
+    width: 100,
+    height: 100,
+    borderColor: '#181A20',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
   },
-  playPauseIcon: {
-    width: 64,
-    height: 64,
+  bigPlayPauseIcon: {
+    width: 80,
+    height: 80,
+  },
+  timeText: {
+    fontSize: 12,
+    color: '#64748B',
   },
 }); 

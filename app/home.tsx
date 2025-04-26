@@ -119,11 +119,12 @@ export default function Home() {
               image={require('../assets/images/Card - Emily Turner.png')}
               name="Emily Turner"
               title="Health Matters"
-            /> <PodcasterCard
-            image={require('../assets/images/Card - Fourten K.png')}
-            name="FourteenK"
-            title="Creative Matters"
-          />
+            />
+            <PodcasterCard
+              image={require('../assets/images/Card - Fourten K.png')}
+              name="FourteenK"
+              title="Creative Matters"
+            />
           </ScrollView>
 
           <Text style={styles.sectionTitle}>All Podcasts</Text>
