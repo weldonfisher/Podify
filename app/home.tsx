@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, ScrollView } from "react-native";
 import { StatusBar } from 'expo-status-bar';
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 interface PodcastCardProps {
   image: any;
@@ -21,47 +21,52 @@ interface SmallPodcastCardProps {
   duration: string;
 }
 
-const PodcastCard = ({ image, title, duration }: PodcastCardProps) => (
-  <View style={styles.podcastCard}>
-    <Image source={image} style={styles.podcastCardImage} />
-    <View style={styles.podcastCardContent}>
-      <Text style={styles.podcastCardTitle}>{title}</Text>
-      <View style={styles.durationContainer}>
-        <Image source={require('../assets/images/clock icon white.png')} style={styles.clockIcon} />
-        <Text style={styles.durationText}>{duration}</Text>
-      </View>
-      <TouchableOpacity style={styles.startButton}>
-        <Text style={styles.startButtonText}>Start Listening</Text>
-      </TouchableOpacity>
-    </View>
-  </View>
-);
-
-const PodcasterCard = ({ image, name, title }: PodcasterCardProps) => (
-  <View style={styles.podcasterCard}>
-    <Image source={image} style={styles.podcasterImage} />
-    <TouchableOpacity style={styles.bookmarkButton}>
-      <Image source={require('../assets/images/bookmark botton.png')} style={styles.bookmarkIcon} />
-    </TouchableOpacity>
-    <Text style={styles.podcasterTitle}>{title}</Text>
-    <Text style={styles.podcasterName}>{name}</Text>
-  </View>
-);
-
-const SmallPodcastCard = ({ image, title, duration }: SmallPodcastCardProps) => (
-  <View style={styles.smallPodcastCard}>
-    <Image source={image} style={styles.smallPodcastImage} />
-    <View style={styles.smallPodcastContent}>
-      <Text style={styles.smallPodcastTitle}>{title}</Text>
-      <View style={styles.smallDurationContainer}>
-        <Image source={require('../assets/images/clock icon.png')} style={styles.smallClockIcon} />
-        <Text style={styles.smallDurationText}>{duration}</Text>
-      </View>
-    </View>
-  </View>
-);
-
 export default function Home() {
+  const router = useRouter();
+
+  const PodcastCard = ({ image, title, duration }: PodcastCardProps) => (
+    <View style={styles.podcastCard}>
+      <Image source={image} style={styles.podcastCardImage} />
+      <View style={styles.podcastCardContent}>
+        <Text style={styles.podcastCardTitle}>{title}</Text>
+        <View style={styles.durationContainer}>
+          <Image source={require('../assets/images/clock icon white.png')} style={styles.clockIcon} />
+          <Text style={styles.durationText}>{duration}</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.startButton}
+          onPress={() => router.push('/listen-podcast')}
+        >
+          <Text style={styles.startButtonText}>Start Listening</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+
+  const PodcasterCard = ({ image, name, title }: PodcasterCardProps) => (
+    <View style={styles.podcasterCard}>
+      <Image source={image} style={styles.podcasterImage} />
+      <TouchableOpacity style={styles.bookmarkButton}>
+        <Image source={require('../assets/images/bookmark botton.png')} style={styles.bookmarkIcon} />
+      </TouchableOpacity>
+      <Text style={styles.podcasterTitle}>{title}</Text>
+      <Text style={styles.podcasterName}>{name}</Text>
+    </View>
+  );
+
+  const SmallPodcastCard = ({ image, title, duration }: SmallPodcastCardProps) => (
+    <View style={styles.smallPodcastCard}>
+      <Image source={image} style={styles.smallPodcastImage} />
+      <View style={styles.smallPodcastContent}>
+        <Text style={styles.smallPodcastTitle}>{title}</Text>
+        <View style={styles.smallDurationContainer}>
+          <Image source={require('../assets/images/clock icon.png')} style={styles.smallClockIcon} />
+          <Text style={styles.smallDurationText}>{duration}</Text>
+        </View>
+      </View>
+    </View>
+  );
+
   return (
     <>
       <StatusBar style="dark" />
@@ -99,11 +104,9 @@ export default function Home() {
 
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Top Podcasters</Text>
-            <Link href="/top-podcasters" asChild>
-              <TouchableOpacity>
-                <Text style={styles.viewAllButton}>View all</Text>
-              </TouchableOpacity>
-            </Link>
+            <TouchableOpacity onPress={() => router.push('/top-podcasters')}>
+              <Text style={styles.viewAllButton}>View all</Text>
+            </TouchableOpacity>
           </View>
 
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.podcastersScroll}>
