@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, ScrollView } from "react-native";
 import { StatusBar } from 'expo-status-bar';
+import { Link } from 'expo-router';
 
 interface PodcastCardProps {
   image: any;
@@ -98,9 +99,11 @@ export default function Home() {
 
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionTitle}>Top Podcasters</Text>
-            <TouchableOpacity>
-              <Text style={styles.viewAllButton}>View all</Text>
-            </TouchableOpacity>
+            <Link href="/top-podcasters" asChild>
+              <TouchableOpacity>
+                <Text style={styles.viewAllButton}>View all</Text>
+              </TouchableOpacity>
+            </Link>
           </View>
 
           <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.podcastersScroll}>
