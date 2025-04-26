@@ -21,28 +21,19 @@ export default function App() {
             Dive into a world of endless stories, insights, and entertainment. Start exploring now and listen to podcasts tailored just for you!
           </Text>
 
-
-
           <View style={styles.buttonsContainer}>
-
-          <View style={styles.buttonContainer}>
-            <Link href="/signin" asChild>
-              <TouchableOpacity style={[styles.signInButton]}>
+            <Link href="/signin" asChild style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.signInButton}>
                 <Text style={styles.buttonText}>Sign In</Text>
               </TouchableOpacity>
             </Link>
-            </View>
 
-
-            <View style={styles.buttonContainer2}>
-            <Link href="/signin" asChild>
-              <TouchableOpacity style={[styles.signInButton]}>
+            <Link href="/signup" asChild style={styles.buttonContainer2}>
+              <TouchableOpacity style={styles.signUpButton}>
                 <Text style={styles.buttonText}>Sign Up</Text>
               </TouchableOpacity>
             </Link>
-            </View>
-            </View>
-            
+          </View>
         </View>
       </SafeAreaView>
     </ImageBackground>
@@ -86,23 +77,34 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     marginBottom: 32,
   },
-  buttonContainer: {
+  buttonsContainer: {
+    flex: 1,
     flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  buttonContainer: {
+    flex: 1,
+    marginRight: 8,
+  },
+  buttonContainer2: {
+    flex: 1,
+    marginLeft: 8,
+  },
+  signInButton: {
     backgroundColor: "#5F57FF",
     padding: 16,
     borderRadius: 12,
-    width: "47%",
-  },
-  buttonContainer2: {
-    flexDirection: "row",
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+    height: 56,
+  },
+  signUpButton: {
     backgroundColor: "transparent",
     padding: 16,
     borderRadius: 12,
-    width: "47%",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 56,
     borderWidth: 1,
     borderColor: "#FFFFFF",
   },
@@ -112,12 +114,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
   },
-  buttonsContainer: {
-
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  
-
 });
